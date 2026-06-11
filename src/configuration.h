@@ -238,6 +238,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // -----------------------------------------------------------------------------
 #define BME_ADDR 0x76
 #define BME_ADDR_ALTERNATE 0x77
+#define BMP581_ADDR 0x47     // BMP580/BMP581 default I2C address
+#define BMP581_ADDR_ALT 0x46 // BMP580/BMP581 alternate (SDO low)
 #define MCP9808_ADDR 0x18
 #define INA_ADDR 0x40 // same as SHT2X
 #define INA_ADDR_ALTERNATE 0x41

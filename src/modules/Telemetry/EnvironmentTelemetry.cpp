@@ -110,6 +110,10 @@ extern void drawCommonHeader(OLEDDisplay *display, int16_t x, int16_t y, const c
 #include "Sensor/BMP3XXSensor.h"
 #endif
 
+#if __has_include(<SparkFun_BMP581_Arduino_Library.h>)
+#include "Sensor/BMP580Sensor.h"
+#endif
+
 #if __has_include(<Adafruit_PCT2075.h>)
 #include "Sensor/PCT2075Sensor.h"
 #endif
@@ -223,6 +227,9 @@ void EnvironmentTelemetryModule::i2cScanFinished(ScanI2C *i2cScanner)
 #endif
 #if __has_include(<Adafruit_BMP3XX.h>)
     addSensor<BMP3XXSensor>(i2cScanner, ScanI2C::DeviceType::BMP_3XX);
+#endif
+#if __has_include(<SparkFun_BMP581_Arduino_Library.h>)
+    addSensor<BMP580Sensor>(i2cScanner, ScanI2C::DeviceType::BMP_580);
 #endif
 #if __has_include(<Adafruit_PCT2075.h>)
     addSensor<PCT2075Sensor>(i2cScanner, ScanI2C::DeviceType::PCT2075);

@@ -372,6 +372,14 @@ void ScanI2CTwoWire::scanPort(I2CPort port, uint8_t *address, uint8_t asize)
                     type = PMU_AXP192_AXP2101;
                 }
                 break;
+            case BMP581_ADDR:
+            case BMP581_ADDR_ALT:
+                registerValue = getRegisterValue(ScanI2CTwoWire::RegisterLocation(addr, 0x01), 1); // BMP5 CHIP_ID
+                if (registerValue == 0x50 || registerValue == 0x51) {                              // 0x50 BMP580/581, 0x51 BMP585
+                    logFoundDevice("BMP-580", (uint8_t)addr.address);
+                    type = BMP_580;
+                }
+                break;
             case BME_ADDR:
             case BME_ADDR_ALTERNATE:
                 registerValue = getRegisterValue(ScanI2CTwoWire::RegisterLocation(addr, 0xD0), 1); // GET_ID
